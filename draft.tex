@@ -1,0 +1,195 @@
+\documentclass[]{article}
+\usepackage[]{my-template}
+
+\begin{document}
+
+This draft is made for learning the conformal fields theory.
+
+\subsection{Definitions}
+
+Consider a transformation of coordinates $T_{\lambda}^x$ with parameter $\lambda$ is a map (may be NON-linear)
+\begin{align*}
+  T_{\lambda}^x
+  \;:
+  &
+  \mathbb{R}^d \mapsto \mathbb{R}^d \;,
+  \\
+  &
+  x^{\mu}(q) \mapsto x'^{\mu}(q)
+  \;,
+\end{align*}
+where $q$ is a point of event, thus being independent on the choice of coordinates. The upper index $x$ denotes that this $T$ acts on $x$.
+
+\begin{definition}
+  \label{definition: conformal transformation}
+  $T_{\lambda}^x$ is called conformal transformation (CT), iff
+  % to-do.
+\end{definition}
+
+By the parameter we list above, $T_{\lambda}^x$ forms a group with respect to $\lambda$. This can be realized by noticing
+\begin{align*}
+  T_{0}^x = 1^x
+  \;,
+\end{align*}
+and the inverse of $T_{\lambda}^x$ is the one of inverse operation on coordinates. The composition can also be checked, by which we say the set of all such operations of coordinates is closed.
+\begin{definition}
+  \label{definition: conformal group}
+  % to-do.
+\end{definition}
+
+
+\subsection{Noether's theorem}
+
+Consider an infinitisimal transformation of coordinates and induced transformation of fields
+\begin{align}
+  &
+  x \rightarrow x'^{\mu} =
+    x^{\mu} + \omega_a(x) f^{\mu a}(x)
+  \\
+  &
+  \phi(x) \rightarrow \phi'(x')
+    = \phi(x) + \omega_a(x) F_a \left( \phi(x), x \right)
+  \;,
+\end{align}
+where $\omega_a$ represents the infinitisimal parameters that induces the transformation; and $f$ and $F$ are functions fixed by the explicit form of transformation. These are the generic expressions. The $\omega_a$ and $F_a$ may or may not depend on $x$.
+
+\begin{definition}{[Rigid]}
+  An infinitisimal transformation is called rigid, if $\omega_a$ declared above is independent of position.
+\end{definition}
+
+\begin{definition}{[On-Shell]}
+A field $\phi$ is called on-shell if it satisfies its Euler-Lagriangian equation induced by its Lagrangian.
+\end{definition}
+
+\begin{theorem}{[Noether]}
+  If the action $S$ is invariant under a given infinitisimal rigid transformation of coordinates indicated by $\left( x' = x + \omega(x) f(x), \phi'(x') = \phi(x) + \omega(x) F(\phi(x),x) \right)$ parameterized by $\omega$, then there is conservation current $j^{\mu a}$ constructed by on-shell field $\phi$, with $\mu$ the space-time index and $a$ the parameter space index (i.e., $\omega_a$), s.t.
+  \begin{align}
+    \partial_{\mu} j^{\mu a} = 0
+    \;,
+  \end{align}
+  where, explicitly,
+  \begin{align}
+    j^{\mu a} :=
+    \left\{ \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \partial_{\nu} \phi
+      - \delta^{\mu}_{\nu} \mathscr{L}
+      \right\} f^{\nu a}
+    - \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} F_a
+    ,
+  \end{align}
+  where we have droped the depended variables for simplicity. 
+\end{theorem}
+This is the Noether theorem of (classical) field version. It is an analogy to the Noether theorem of the (classical) particles version. The word "symmetry" is clarified as {\it the invariance of the action} under that operation (given rigid transformation of coordiantes).
+
+
+\begin{remark}
+  If the $F^a(\phi, x)$ is linear to $\phi$, the $\phi'(x') = \phi(x) + \omega_a F^a \left( \phi(x), x \right)$ can be regarded as a (locally around unit) representation of the group of the transformation of coordinates (if it does form a group) at position $x$ on the target space of $\phi(x)$. (Remind that the pair
+  $\left( x, \phi(x) \right)$
+  forms a vector-bundle.)
+  Notice that the $F$ can depend explicitly on $x$!
+\end{remark}
+
+The explanation is shown as follow. Alice uses coordinates $x$; and Bob uses $x'$. For the same {\it physical} configuration of field, Alice will observe a {\it functional form} of field $\phi(x)$; and Bob a functional form $\phi'(x)$ ({\it not the $\phi'(x')$!}). The relation between their coordinates induced by the given transformation of coordinates is known, shown above; the transformation of field induced by the same transformation of coordinates is also known, shown above. They will, and shall, use the same functional form of Lagrangian (since they copy it from the same book). Now they wonder the same thing: for a given on-shell physical configuration of the field ("event"), what is the {\it value} of action with respect to this physical configuration? The Alice's value is denoted by $S$; and Bob's by $S'$. This theorem states that, if the transformation of coordinate is an infinitisimal rigid one and if the $S = S'$, then there exists a conservation current $j^{\mu a}$ in this system, which can be constructed out explicitly, shown above.
+
+\begin{roof}
+  Even though the action is invariant under rigid transformation of coordinates, for proving this theorem, we still first employ a non-rigid transformation of coordinates. But we shall only use the invariance of action with respect to the rigid one as the condition.
+  For the infinitisimal non-rigid transformation of coordinates (and induced transformation of field) shown above, by direct calculations (c.f., \ref{gyb}, from equ.(2.112) to equ.(2.139)),
+  \begin{align}
+    S' &
+    := \int d^d x \mathscr{L} \left(\phi' (x), \partial_{\mu} \phi'(x) \right)
+    \\
+    & =
+    \int d^d x \left[ 1 + \partial_{\mu} \left( \omega_a f^{\mu a} \right) \right] \times
+      \mathscr{L} \left\{ \phi + \omega_a F^a, \partial_{\mu} \phi +
+        \partial_{\nu} \left( \omega_a F^a \right) - \partial_{\mu} \left( \omega_a f^{\nu a} \right) \partial_{\nu} \phi \right\}
+    \;.
+  \end{align}
+  By Taylor expansion and several collections, it then implies
+  \begin{align}
+    (S' - S) [\phi]
+    & =
+    \int d^d x \Bigg\{
+      \partial_{\mu} \omega_a \left[
+        f^{\mu a} \mathscr{L}
+        + \frac{\partial \mathscr{L}}{\partial (\partial_{\mu}) \phi} F^a
+        - \frac{\partial \mathscr{L}}{\partial (\partial_{\mu}) \phi} f^{\nu a} \partial_{\nu} \phi
+        \right]
+      \\
+      &
+      + \omega_a \left[
+        \partial_{\mu} f^{\mu a} \mathscr{L}
+        + \frac{\partial \mathcal{L}}{\partial \phi} F^a
+        + \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \partial_{\mu} F^a
+        - \frac{\partial \mathscr{L}}{\partial (\partial_{\mu} \phi)} \partial_{\mu} f^{\nu a} \partial_{\nu} \phi
+        \right]
+      \Bigg\}
+    \;.
+  \end{align}
+  By the condition of invariance of action by infinitisimal rigid transformation of coordinates, the "$\omega_a [\ldots]$" term vanishes. It then reduces to
+  \begin{align}
+    (S' - S) [\phi]
+    & =
+    \int d^d x \left\{
+      \partial_{\mu} \omega_a j^{\mu a}
+      \right\}
+    \;,
+  \end{align}
+  where
+  \begin{align}
+    j^{\mu a} :=
+      f^{\mu a} \mathscr{L}
+      + \frac{\partial \mathscr{L}}{\partial (\partial_{\mu}) \phi} F^a
+      - \frac{\partial \mathscr{L}}{\partial (\partial_{\mu}) \phi} f^{\nu a} \partial_{\nu} \phi
+    \;.
+  \end{align}
+  By a proper assumption on the boundary behavior of on-shell $\phi$, we take integral by path, which gains
+   \begin{align}
+    (S' - S) [\phi]
+    & =
+    \int d^d x \left\{
+      \omega_a \partial_{\mu} j^{\mu a}
+      \right\}
+    \;.
+  \end{align}
+  Again, through the whole process, we have droped the depended variables $x$ and $\phi(x)$ in $\mathscr{L}$, $f$, and $F$ for simplicity. 
+  Notice that
+  \begin{align}
+    S'
+    & =
+    \int d^d x \mathscr{L} \left(\phi' (x), \partial_{\mu} \phi'(x) \right)
+    \\
+    & =
+    \int d^d x \mathscr{L} \left[\phi (x) + \delta \phi (x), \partial_{\mu} \left( \phi(x) + \delta \phi(x) \right) \right]
+    \;;
+  \end{align}
+  and $\delta \phi(x) := \phi'(x) - \phi(x)$ can be viewed as a variation of field $\phi(x)$. So, by the condition that $\phi$ is on-shell, the $S' - S$, viewd as variation, is zero. Because $\omega_a(x)$ is arbitrary, we get
+  $\partial_{\mu} j^{\mu a} = 0$,
+  which is just what we want to proof.
+\end{roof}
+
+\begin{itemize}
+\item
+  Within this proof, the place where conditions within the declarition of the theorem are used all follow the sentense: "{\it By the condition......}".
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%        References        %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{9}
+
+\bibitem{Conformal Fields Theory}
+  \label{gyb}
+  Conformal Fields Theory.
+
+\end{thebibliography}
+
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,94 @@
+\ProvidesPackage{my-template}
+
+
+%\hypersetup{colorlinks} % Comment this line if you don't wish to have colored links
+
+\RequirePackage{microtype} % Improves character and word spacing
+
+\RequirePackage{lipsum} % Inserts dummy text
+
+\RequirePackage{booktabs} % Better horizontal rules in tables
+
+\RequirePackage{graphicx} % Needed to insert images into the document
+\graphicspath{{graphics/}} % Sets the default location of pictures
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio} % Improves figure scaling
+
+\RequirePackage{fancyvrb} % Allows customization of verbatim environments
+\fvset{fontsize=\normalsize} % The font size of all verbatim text can be changed here
+
+\RequirePackage{ulem} % Sout line, and so on.
+
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}} % New command to create parentheses around text in tables which take up no horizontal space - this improves column spacing
+\newcommand{\hangstar}{\makebox[0pt][l]{*}} % New command to create asterisks in tables which take up no horizontal space - this improves column spacing
+
+\RequirePackage{xspace} % Used for printing a trailing space better than using a tilde (~) using the \xspace command
+
+\newcommand{\monthyear}{\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\space\number\year} % A command to print the current month and year
+
+\newcommand{\openepigraph}[2]{ % This block sets up a command for printing an epigraph with 2 arguments - the quote and the author
+\begin{fullwidth}
+\sffamily\large
+\begin{doublespace}
+\noindent\allcaps{#1}\\ % The quote
+\noindent\allcaps{#2} % The author
+\end{doublespace}
+\end{fullwidth}
+}
+
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage} % Command to insert a blank page
+
+\RequirePackage{makeidx} % Used to generate the index
+\makeindex % Generate the index which is printed at the end of the document
+
+%\usepackage{eulervm} % Use the AMS-Euler font.
+
+
+
+%% -----------------------------------------------------------------------
+
+\RequirePackage{hyperref}
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\usepackage{amsfonts}
+\ifx\pdfoutput\@undefined\RequirePackage[usenames,dvips]{color}
+\else\RequirePackage[usenames,dvipsnames]{color}
+
+
+\newtheorem{remark}{Remark}
+\newtheorem{digression}{Digression}
+\newtheorem{note}{Note}
+\newtheorem{story}{Story}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{roof}{Proof}[section]
+
+
+% 处理数学公式中的黑斜体的宏包
+\RequirePackage{bm}
+
+% 不同于~|\mathcal| or |\mathfrak| 之类的英文花体字体
+\RequirePackage{mathrsfs}
+
+
+% 确定浮动对象的位置，可以使用~H，强制将浮动对象放到这里（可能效果很差）
+\RequirePackage{float}
+
+% 浮动图形控制宏包。
+% 允许上一个~section 的浮动图形出现在下一个~section 的开始部分
+% 该宏包提供处理浮动对象的~|\FloatBarrier| 命令，使所有未处
+% 理的浮动图形立即被处理。这三个宏包仅供参考，未必使用：
+ % \RequirePackage[below]{placeins}
+ % \RequirePackage{floatflt} % 图文混排用宏包
+ % \RequirePackage{rotating} % 图形和表格的控制旋转
+
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle#1 \vphantom{#2}\right| \left. #2 \vphantom{#1}\right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \vphantom{#2#3} \right| #2 \left| #3 \vphantom{#1#2} \right\rangle}}
+
+
+
+\endinput
